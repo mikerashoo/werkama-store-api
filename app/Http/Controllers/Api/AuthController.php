@@ -31,7 +31,7 @@ class AuthController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'email',
-            'email' => 'required',
+            'user_name' => 'required|unique:users,user_name',
             'role' => 'required',
             'password' => 'required',
             'confirm_password' => 'required|same:password',

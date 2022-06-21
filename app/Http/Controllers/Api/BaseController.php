@@ -31,4 +31,14 @@ class BaseController extends Controller
         }
         return response()->json($res, $code);
     }
+
+    public function throwUnAuthorizedMessage()
+    {
+        $res = [
+            'success' => false,
+            'message' => 'Your are not authorized to perform this action',
+        ];
+
+        return response()->json($res, 401);
+    }
 }
