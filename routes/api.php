@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum', 'admin'])->get('/users', [UserController::class, 'users']);
-Route::middleware('auth:sanctum')->post('/users/create', [UserController::class, 'register']);
 Route::group(['prefix' => 'admin/users', 'middleware' => ['auth:sanctum', 'admin']], function () {
+    Route::get('list', [UserController::class, 'index']);
     Route::post('create', [UserController::class, 'register']);
 });
 

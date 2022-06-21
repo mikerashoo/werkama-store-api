@@ -14,7 +14,11 @@ class UserController extends BaseController
 
     public function index()
     {
-        return User::all();
+        if (Auth::user()->role == 'super_admin') {
+            return User::where('role', '!=', 'super_admin')->get();
+        } else {
+            return User::where('role', '=', 'seller')->get();
+        }
     }
 
     public function register(Request $request)
